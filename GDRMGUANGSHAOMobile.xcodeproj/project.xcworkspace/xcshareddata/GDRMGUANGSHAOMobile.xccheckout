@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CF36CEEB-7CD0-4459-8660-CBBB72AE404A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GDRMGUANGSHAOMobile</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>22F1D3E470E7DEA3DA75200802A744F37697B762</key>
+		<string>http://192.168.0.243/GDRMMobileGuangShao.git</string>
+		<key>CC9E6813401FC20BF860D9A1BE28999344063381</key>
+		<string>http://192.168.0.243/guizhouluzheng.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GDRMGUANGSHAOMobile.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>22F1D3E470E7DEA3DA75200802A744F37697B762</key>
+		<string>../..</string>
+		<key>CC9E6813401FC20BF860D9A1BE28999344063381</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://192.168.0.243/GDRMMobileGuangShao.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>22F1D3E470E7DEA3DA75200802A744F37697B762</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CC9E6813401FC20BF860D9A1BE28999344063381</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>22F1D3E470E7DEA3DA75200802A744F37697B762</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GDRMMobileGuangShao</string>
+		</dict>
+	</array>
+</dict>
+</plist>
