@@ -48,9 +48,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application{
     UploadRecord *uploadCheck = [[UploadRecord alloc] init];
     [uploadCheck asyncDel];
-    if([WebServiceHandler isServerReachable]) {
-        [self hasUpdateVersion];
-    }
+    [self hasUpdateVersion];
 }
 - (void)hasUpdateVersion{
     //    kWeakSelf(self);
