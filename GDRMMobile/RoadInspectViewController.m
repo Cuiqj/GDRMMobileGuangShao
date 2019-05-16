@@ -18,6 +18,8 @@
 #import "RoadSegment.h"
 #import "CaseDeformation.h"
 
+#import "InspectionEveryDayDetailsViewController.h"
+
 @interface RoadInspectViewController ()
 @property (nonatomic,retain) NSMutableArray *data;
 @property (nonatomic,retain) UIPopoverController *pickerPopover;
@@ -48,6 +50,12 @@ InspectionCheckState inspectionState;
 
 - (void)viewDidLoad
 {
+    NSDate * detailDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"detaildate"];
+    if (detailDate) {
+        [self.OnedateDataButton setHidden:NO];
+    }else{
+        [self.OnedateDataButton setHidden:YES];
+    }
     self.state = kRecord;
 
     if (self.state2 == kCheckRecord) {
@@ -237,6 +245,12 @@ InspectionCheckState inspectionState;
 - (void)setInspectionDelegate:(NSString *)aInspectionID{
     self.inspectionID=aInspectionID;
     [self loadInspectionInfo];
+    NSDate * detailDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"detaildate"];
+    if (detailDate) {
+        [self.OnedateDataButton setHidden:NO];
+    }else{
+        [self.OnedateDataButton setHidden:YES];
+    }
 }
 
 - (void)popBackToMainView{
@@ -412,6 +426,12 @@ InspectionCheckState inspectionState;
             [self.tableRecordList deselectRowAtIndexPath:index animated:YES];
         }
     }
+}
+
+- (IBAction)inspectionDetailsClick:(id)sender {
+    UIStoryboard * mainboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    InspectionEveryDayDetailsViewController * everydaydetails = [mainboard instantiateViewControllerWithIdentifier:@"inspectionEveryDayDetails"];
+    [self.navigationController pushViewController:everydaydetails animated:YES];
 }
 
 - (IBAction)btnDeliver:(UIButton *)sender {

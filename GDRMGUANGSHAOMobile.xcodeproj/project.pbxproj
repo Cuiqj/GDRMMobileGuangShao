@@ -263,6 +263,8 @@
 		80D2081D180722FD00D17F47 /* ProveInfoTable.xml in Resources */ = {isa = PBXBuildFile; fileRef = 80D20813180722FD00D17F47 /* ProveInfoTable.xml */; };
 		80D2081E180722FD00D17F47 /* ServiceReceiptTable.xml in Resources */ = {isa = PBXBuildFile; fileRef = 80D20814180722FD00D17F47 /* ServiceReceiptTable.xml */; };
 		8420449A2179A54600CCDAB1 /* LCNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 842044992179A54600CCDAB1 /* LCNetworking.m */; };
+		8430BF9C2283D41E00874454 /* Inspection_Main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430BF9B2283D41E00874454 /* Inspection_Main.m */; };
+		846759632289595C00D43C08 /* InspectionEveryDayDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846759622289595C00D43C08 /* InspectionEveryDayDetailsViewController.m */; };
 		9B3C3E6C1796C5940071C174 /* ServiceFileSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3C3E6B1796C5930071C174 /* ServiceFileSelectViewController.m */; };
 		9B6464571814EE4300569AE3 /* last_page_InquireTable.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9B6464561814EE4300569AE3 /* last_page_InquireTable.xml */; };
 		9BC0B11217A9001800D7C9CD /* TBXML+TraverseAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0B11117A9001700D7C9CD /* TBXML+TraverseAddition.m */; };
@@ -724,6 +726,10 @@
 		80D20814180722FD00D17F47 /* ServiceReceiptTable.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ServiceReceiptTable.xml; sourceTree = "<group>"; };
 		842044982179A54600CCDAB1 /* LCNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCNetworking.h; sourceTree = "<group>"; };
 		842044992179A54600CCDAB1 /* LCNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCNetworking.m; sourceTree = "<group>"; };
+		8430BF9A2283D41E00874454 /* Inspection_Main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Inspection_Main.h; sourceTree = "<group>"; };
+		8430BF9B2283D41E00874454 /* Inspection_Main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Inspection_Main.m; sourceTree = "<group>"; };
+		846759612289595C00D43C08 /* InspectionEveryDayDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InspectionEveryDayDetailsViewController.h; sourceTree = "<group>"; };
+		846759622289595C00D43C08 /* InspectionEveryDayDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InspectionEveryDayDetailsViewController.m; sourceTree = "<group>"; };
 		9B3C3E6A1796C5920071C174 /* ServiceFileSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceFileSelectViewController.h; sourceTree = "<group>"; };
 		9B3C3E6B1796C5930071C174 /* ServiceFileSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceFileSelectViewController.m; sourceTree = "<group>"; };
 		9B6464561814EE4300569AE3 /* last_page_InquireTable.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = last_page_InquireTable.xml; sourceTree = "<group>"; };
@@ -1390,6 +1396,8 @@
 		33A527AC14F742E0009BC91E /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
+				8430BF9A2283D41E00874454 /* Inspection_Main.h */,
+				8430BF9B2283D41E00874454 /* Inspection_Main.m */,
 				33693F3719A1F637004D0ABC /* InspectionConstruction.h */,
 				33693F3819A1F637004D0ABC /* InspectionConstruction.m */,
 				67CAEC02178D6E11000BF8A7 /* ConstructionChangeBack.h */,
@@ -1608,6 +1616,8 @@
 				67CAEBF2178BE1AE000BF8A7 /* CaseConstructionChangeBackViewController.m */,
 				67CAEBF6178C4D1D000BF8A7 /* TrafficRecordViewController.h */,
 				67CAEBF7178C4D1E000BF8A7 /* TrafficRecordViewController.m */,
+				846759612289595C00D43C08 /* InspectionEveryDayDetailsViewController.h */,
+				846759622289595C00D43C08 /* InspectionEveryDayDetailsViewController.m */,
 			);
 			name = RoadInspect;
 			sourceTree = "<group>";
@@ -1885,6 +1895,7 @@
 				33A09019155378040096E5B1 /* CaseViewController.m in Sources */,
 				338443B41560EAA300034CBF /* TBXML.m in Sources */,
 				337721C5157470E900F110ED /* CitizenListViewController.m in Sources */,
+				8430BF9C2283D41E00874454 /* Inspection_Main.m in Sources */,
 				338A15F5157C67AB00242D84 /* AccInfoPickerViewController.m in Sources */,
 				33B4E904157DF6BF002B7D55 /* CaseDescListViewController.m in Sources */,
 				33B4E907157E0654002B7D55 /* CaseDescString.m in Sources */,
@@ -1900,6 +1911,7 @@
 				3399CA4015AEB88000CE9028 /* TextInputViewController.m in Sources */,
 				3398966415C6795C007D1F29 /* NSNumber+NumberConvert.m in Sources */,
 				339EA62115D1F88B004497B3 /* CaseDocuments.m in Sources */,
+				846759632289595C00D43C08 /* InspectionEveryDayDetailsViewController.m in Sources */,
 				339EA62C15D2635E004497B3 /* NSString+MyStringProcess.m in Sources */,
 				33952AD015D359A500C3B283 /* CaseInquirePrinterViewController.m in Sources */,
 				3373F0B815E5D679004B86A4 /* CheckType.m in Sources */,

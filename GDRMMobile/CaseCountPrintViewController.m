@@ -56,7 +56,7 @@ static NSString * xmlName = @"CaseCountTable";
     self.labelCaseAddress.text = caseInfo.full_happen_place;
     self.labelHappenTime.text = [dateFormatter stringFromDate:caseInfo.happen_date];
     if (citizen) {
-        self.labelParty.text = [NSString stringWithFormat:@"%@ %@", (citizen.org_name ? citizen.org_name : @""), citizen.party];
+        self.labelParty.text = [NSString stringWithFormat:@"%@   %@", (citizen.org_name ? citizen.org_name : @""), citizen.party];
         self.labelAutoNumber.text = citizen.automobile_number;
         self.labelAutoPattern.text = citizen.automobile_pattern;
         self.labelTele.text = citizen.tel_number;

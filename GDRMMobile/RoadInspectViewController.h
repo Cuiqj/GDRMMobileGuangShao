@@ -49,6 +49,11 @@ typedef enum {
 - (IBAction)btnInpectionList:(id)sender;
 - (IBAction)btnAddNew:(id)sender;
 
+
+- (IBAction)inspectionDetailsClick:(id)sender; //巡查本日汇总明细
+@property (weak, nonatomic) IBOutlet UIButton *OnedateDataButton;
+
+
 - (void) createRecodeByCaseID:(NSString *)caseID;
 
 - (void) createRecodeByTrafficRecord:(TrafficRecord *)trafficRecord;

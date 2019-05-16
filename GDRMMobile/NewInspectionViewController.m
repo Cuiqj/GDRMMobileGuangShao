@@ -165,7 +165,8 @@
 #pragma mark - IBActions
 - (IBAction)btnCancel:(UIBarButtonItem *)sender {
     [self.delegate popBackToMainView];
-    [self dismissModalViewControllerAnimated:NO];    
+    [self dismissViewControllerAnimated:NO completion:nil];
+//    [self dismissModalViewControllerAnimated:NO];
 }
 
 - (IBAction)btnSave:(UIBarButtonItem *)sender {
@@ -189,10 +190,18 @@
         newInspection.time_start=[formatter dateFromString:self.textDate.text];
         newInspection.weather=self.textWeather.text;
         newInspection.carcode=self.textAutoNumber.text;
-        newInspection.classe=self.textWorkShift.text;
+        newInspection.classe=self.textWorkShift.text;    //班次    中班
         NSString *currentUserID=[[NSUserDefaults standardUserDefaults] stringForKey:USERKEY];
         NSString *currentUserName=[[UserInfo userInfoForUserID:currentUserID] valueForKey:@"username"];
         NSArray *inspectorArray = [[NSUserDefaults standardUserDefaults] objectForKey:INSPECTORARRAYKEY];
+//       本肉汇总是否显示     需要显示就保存     不需要就不存储
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+        NSString * datestring = [self.textDate.text substringToIndex:10];
+        NSDate * datedetail = [formatter dateFromString:datestring];
+        if ([self.textWorkShift.text isEqualToString:@"中班"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:datedetail forKey:@"detaildate"];
+        }
+        
         if (inspectorArray.count < 1) {
             newInspection.inspectionor_name = currentUserName;
         } else {
@@ -217,7 +226,7 @@
             newCheck.checkresult=checkItem.checkResult;
             [[AppDelegate App] saveContext];
         }
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:NO completion:nil];
         [self.delegate setInspectionDelegate:newInspectionID];
         [self.delegate addObserverToKeyBoard];
     }

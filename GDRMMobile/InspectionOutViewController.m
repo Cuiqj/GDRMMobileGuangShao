@@ -196,9 +196,12 @@
             [[AppDelegate App] saveContext];
         }
         [[NSUserDefaults standardUserDefaults] setValue:nil forKey:INSPECTIONKEY];
+        //     初始化 是否有本日汇总信息
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"detaildate"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self.delegate popBackToMainView];
-        [self dismissModalViewControllerAnimated:NO];
+        [self dismissViewControllerAnimated:NO completion:nil];
+//        [self dismissModalViewControllerAnimated:NO];
     }
 }
 
