@@ -321,6 +321,7 @@
         <attribute name="inspection_principal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="inspection_principal_content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="inspection_principal_sign_date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isuploaded" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="jcsgd" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jzwfxw" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="myid" optional="YES" attributeType="String" syncable="YES"/>
@@ -602,7 +603,7 @@
         <element name="InquireAnswerSentence" positionX="0" positionY="0" width="128" height="75"/>
         <element name="InquireAskSentence" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Inspection" positionX="0" positionY="0" width="128" height="405"/>
-        <element name="Inspection_Main" positionX="81" positionY="153" width="128" height="405"/>
+        <element name="Inspection_Main" positionX="81" positionY="153" width="128" height="420"/>
         <element name="InspectionCheck" positionX="0" positionY="0" width="128" height="135"/>
         <element name="InspectionConstruction" positionX="160" positionY="192" width="128" height="270"/>
         <element name="InspectionOutCheck" positionX="0" positionY="0" width="128" height="135"/>

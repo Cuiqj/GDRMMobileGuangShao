@@ -25,6 +25,9 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * username;
 
+
+
+
 + (UserInfo *)userInfoForUserID:(NSString *)userID;
 
 + (UserInfo *)userInfoForOrganization_id:(NSString *)name_id;

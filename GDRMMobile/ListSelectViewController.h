@@ -12,9 +12,10 @@
 
 @interface ListSelectViewController : UITableViewController
 
-@property (nonatomic,weak) UIPopoverController *pickerPopover;
+@property (nonatomic,retain) UIPopoverController *pickerPopover;
 @property (nonatomic,weak) id<ListSelectPopoverDelegate> delegate;
-@property (nonatomic,strong) NSArray *data;
+@property (nonatomic,strong) NSArray * data;
+@property (nonatomic) NSInteger tagnum;
 
 @end
 
@@ -23,6 +24,6 @@
 //设置检查类型
 - (void)setSelectData:(NSString *)data;
 // added by xushiwen
-- (void)listSelectPopover:(ListSelectViewController *)popoverContent selectedIndexPath:(NSIndexPath *)indexPath;
+- (void)listSelectPopover:(NSUInteger)tagnum selectedIndexPathforname:(NSString *)name;
 
 @end

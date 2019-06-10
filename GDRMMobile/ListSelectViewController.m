@@ -102,8 +102,8 @@
 {
     if ([self.delegate respondsToSelector:@selector(setSelectData:)]) {
         [self.delegate setSelectData:[self.data objectAtIndex:indexPath.row]];
-    } else if ([self.delegate respondsToSelector:@selector(listSelectPopover:selectedIndexPath:)]) {
-        [self.delegate listSelectPopover:self selectedIndexPath:indexPath];
+    } else if ([self.delegate respondsToSelector:@selector(listSelectPopover:selectedIndexPathforname:)]) {
+        [self.delegate listSelectPopover:self.tagnum selectedIndexPathforname:[self.data objectAtIndex:indexPath.row]];
     }
     [self.pickerPopover dismissPopoverAnimated:YES];
 }

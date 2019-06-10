@@ -48,7 +48,7 @@ enum kPageInfo {
         if (self.caseInquire) {
             //获取证件号码
             self.userInfo=[UserInfo userInfoForOrganization_id:self.caseInquire.recorder_name];
-            self.recorder_name_id=self.userInfo.exelawid;
+            self.recorder_name_id= self.userInfo.exelawid;
             self.userInfo=[UserInfo userInfoForOrganization_id:self.caseInquire.inquirer_name];
             self.inquirer_name_id=self.userInfo.exelawid;
             //获取证件号码

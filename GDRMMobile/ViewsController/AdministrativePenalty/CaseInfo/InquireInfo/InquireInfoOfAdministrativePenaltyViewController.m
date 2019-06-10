@@ -720,26 +720,26 @@ enum kUITextFieldTag {
 
 #pragma mark - ListSelectPopoverDelegate
 
-- (void)listSelectPopover:(ListSelectViewController *)popoverContent selectedIndexPath:(NSIndexPath *)indexPath {
-    if (popoverContent.tableView.tag == kUITextFieldTagInquirer) {
-        [self.textFieldInquirer setText:self.users[indexPath.row]];
-    } else if (popoverContent.tableView.tag == kUITextFieldTagRecorder) {
-        [self.textFieldRecorder setText:self.users[indexPath.row]];
+- (void)listSelectPopover:(NSUInteger)tagnum selectedIndexPathforname:(NSString *)name{
+    if (tagnum == kUITextFieldTagInquirer) {
+        self.textFieldInquirer.text = name;
+    } else if (tagnum == kUITextFieldTagRecorder) {
+        self.textFieldRecorder.text = name;
     }
 }
 
 - (void)presentPopoverFromRect:(CGRect)rect dataSource:(NSArray *)dataArray tableViewTag:(NSInteger)tag {
-    ListSelectViewController *popoverContent = [self.storyboard instantiateViewControllerWithIdentifier:@"ListSelectPoPover"];
-    popoverContent.data = dataArray;    
-    popoverContent.delegate = self;
-    popoverContent.tableView.tag = tag;
-    if (self.listSelectPopover == nil) {
+    if ([self.listSelectPopover isPopoverVisible]) {
+        [self.listSelectPopover dismissPopoverAnimated:YES];
+    }else {
+        ListSelectViewController * popoverContent = [self.storyboard instantiateViewControllerWithIdentifier:@"ListSelectPoPover"];
+        popoverContent.data = dataArray;
+        popoverContent.delegate = self;
+        popoverContent.tagnum = tag;
         self.listSelectPopover = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
-    } else {
-        [self.listSelectPopover setContentViewController:popoverContent];
+        popoverContent.pickerPopover = self.listSelectPopover;
+        [self.listSelectPopover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
     }
-    popoverContent.pickerPopover = self.listSelectPopover;
-    [self.listSelectPopover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 }
 
 @end

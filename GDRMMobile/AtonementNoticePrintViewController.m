@@ -152,6 +152,7 @@ static NSString * xmlName = @"AtonementNoticeTable";
 }
 
 - (void)generateDefaultsForNotice:(AtonementNotice *)notice{
+    
     CaseProveInfo *proveInfo = [CaseProveInfo proveInfoForCase:self.caseID];
     proveInfo.event_desc = [CaseProveInfo generateEventDescForCase:self.caseID];
 

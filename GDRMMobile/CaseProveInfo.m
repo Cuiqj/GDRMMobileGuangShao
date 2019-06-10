@@ -68,19 +68,15 @@
 }
 
 + (NSString *)generateEventDescForCase:(NSString *)caseID{
-    //勘验笔录描述
+    //勘验笔录描述     配补偿通知书也用到
     CaseInfo *caseInfo=[CaseInfo caseInfoForID:caseID];
     NSString *roadName=[RoadSegment roadNameFromSegment:caseInfo.roadsegment_id];
-    
-    
     NSString *caseDescString=@"";
     NSManagedObjectContext *context=[[AppDelegate App] managedObjectContext];
-    
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
     [dateFormatter setLocale:[NSLocale currentLocale]];
     [dateFormatter setDateFormat:@"yyyy年MM月dd日HH时mm分"];
     NSString *happenDate=[dateFormatter stringFromDate:caseInfo.happen_date];
-    
     NSNumberFormatter *numFormatter=[[NSNumberFormatter alloc] init];
     [numFormatter setPositiveFormat:@"000"];
     NSInteger stationStartM=caseInfo.station_start.integerValue%1000;
@@ -121,6 +117,11 @@
             if (caseInfo.badcar_sum.integerValue!=0) {
                 //        caseStatusString=[caseStatusString stringByAppendingFormat:@"损坏%@辆车",caseInfo.badcar_sum];
                 caseStatusString=[caseStatusString stringByAppendingFormat:@"车辆%@损坏",citizen.bad_desc];
+                if ([caseDescString containsString:@"损坏损坏"]) {
+                    caseDescString = [caseDescString stringByReplacingOccurrencesOfString:@"损坏损坏" withString:@"损坏"];
+                }else if([caseDescString containsString:@"损毁损坏"]){
+                    caseDescString = @"车辆损毁";
+                }
             } else {
                 caseStatusString=[caseStatusString stringByAppendingString:@"未造成车辆损坏"];
             }

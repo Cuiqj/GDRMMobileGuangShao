@@ -56,29 +56,33 @@
     self.date_inspectiontextfield.enabled = NO;
     
     self.inspectionmain = [Inspection_Main inspection_mainFordate:detailDate];
-    self.inspection_miletextfield.text = self.inspectionmain.inspection_mile;
-    self.inspection_man_numtextfield.text = self.inspectionmain.inspection_man_num;
-    self.accident_numtextfield.text = self.inspectionmain.accident_num;
-    self.deal_accident_numtextfield.text = self.inspectionmain.deal_accident_num;
-    self.deal_bxlp_numtextfield.text = self.inspectionmain.deal_bxlp_num;
-    self.fxqxtextfield.text = self.inspectionmain.fxqx;
-    self.fxwfxwtextfield.text = self.inspectionmain.fxwfxw;
-    self.jzwfxwtextfield.text = self.inspectionmain.jzwfxw;
-    self.cllmzawtextfield.text = self.inspectionmain.cllmzaw;
-    self.bzgzctextfield.text = self.inspectionmain.bzgzc;
-    self.jcsgdtextfield.text = self.inspectionmain.jcsgd;
-    self.gzzfjtextfield.text = self.inspectionmain.gzzfj;
-    self.fcflwstextfield.text = self.inspectionmain.fcflws;
-    self.qlxrtextfield.text = self.inspectionmain.qlxr;
-    
-    self.reporter_contenttextview.text = self.inspectionmain.reporter_content;
-    self.inspection_principal_contenttextview.text = self.inspectionmain.inspection_principal_content;
-    self.notetextview.text = self.inspectionmain.note;
-    
-    self.reportertextfield.text = self.inspectionmain.reporter;
-    self.reporter_sign_datetextfield.text = [dateformatter stringFromDate:self.inspectionmain.reporter_sign_date];
-    self.inspection_principaltextfield.text = self.inspectionmain.inspection_principal;
-    self.inspection_principal_sign_datetextfield.text = [dateformatter stringFromDate:self.inspectionmain.inspection_principal_sign_date];
+    if(self.inspectionmain){
+        self.inspection_miletextfield.text = self.inspectionmain.inspection_mile;
+        self.inspection_man_numtextfield.text = self.inspectionmain.inspection_man_num;
+        self.accident_numtextfield.text = self.inspectionmain.accident_num;
+        self.deal_accident_numtextfield.text = self.inspectionmain.deal_accident_num;
+        self.deal_bxlp_numtextfield.text = self.inspectionmain.deal_bxlp_num;
+        self.fxqxtextfield.text = self.inspectionmain.fxqx;
+        self.fxwfxwtextfield.text = self.inspectionmain.fxwfxw;
+        self.jzwfxwtextfield.text = self.inspectionmain.jzwfxw;
+        self.cllmzawtextfield.text = self.inspectionmain.cllmzaw;
+        self.bzgzctextfield.text = self.inspectionmain.bzgzc;
+        self.jcsgdtextfield.text = self.inspectionmain.jcsgd;
+        self.gzzfjtextfield.text = self.inspectionmain.gzzfj;
+        self.fcflwstextfield.text = self.inspectionmain.fcflws;
+        self.qlxrtextfield.text = self.inspectionmain.qlxr;
+        
+        self.reporter_contenttextview.text = self.inspectionmain.reporter_content;
+        self.inspection_principal_contenttextview.text = self.inspectionmain.inspection_principal_content;
+        self.notetextview.text = self.inspectionmain.note;
+        
+        self.reportertextfield.text = self.inspectionmain.reporter;
+        self.reporter_sign_datetextfield.text = [dateformatter stringFromDate:self.inspectionmain.reporter_sign_date];
+        self.inspection_principaltextfield.text = self.inspectionmain.inspection_principal;
+        self.inspection_principal_sign_datetextfield.text = [dateformatter stringFromDate:self.inspectionmain.inspection_principal_sign_date];
+    }else{
+        [self btnDeleteData];
+    }
 }
 - (void)keyboardWillShow:(NSNotification *)aNotification{
     //获取键盘的高度
@@ -93,8 +97,6 @@
 - (void)keyboardWillHide:(NSNotification *)aNotification{
     self.mineScrollview.frame = CGRectMake(0, 0, 1024, 640);
 }
-
-
 
 - (void)btnSaveData{
     self.inspectionmain.inspection_mile = self.inspection_miletextfield.text;  //当日巡查里程
@@ -124,22 +126,22 @@
     self.inspectionmain.note = self.notetextview.text;     //备注栏
 }
 - (void)btnDeleteData{
-    self.inspection_miletextfield.text = nil;  //当日巡查里程
-    self.inspection_man_numtextfield.text = nil;  //当日参加巡查人次
-    self.accident_numtextfield.text = nil;     //发生交通事故/其中涉及路产
-    self.deal_accident_numtextfield.text = nil;    //处理路产损害赔偿
-    self.deal_bxlp_numtextfield.text = nil;     //处理路产保险理赔案件
-    self.fxqxtextfield.text = nil;    //发现报送道路、交安设施缺陷
-    self.fxwfxwtextfield.text = nil;    //发现违法行为
-    self.jzwfxwtextfield.text = nil;    //纠正违法行为
-    self.cllmzawtextfield.text = nil;     //处理路面障碍物
-    self.bzgzctextfield.text = nil;    //帮助故障车
-    self.jcsgdtextfield.text = nil;   //施工检查点/纠正违反公路施工安全作业规程
-    self.gzzfjtextfield.text = nil;  //告知交通综合行政执法局处理案件
-    self.fcflwstextfield.text = nil;   //发出法律文书
-    self.qlxrtextfield.text = nil;  //劝离行人
+    self.inspection_miletextfield.text = @"0";  //当日巡查里程
+    self.inspection_man_numtextfield.text = @"0";  //当日参加巡查人次
+    self.accident_numtextfield.text = @"0/0";    //发生交通事故/其中涉及路产
+    self.deal_accident_numtextfield.text = @"0/0";   //处理路产损害赔偿
+    self.deal_bxlp_numtextfield.text = @"0/0";     //处理路产保险理赔案件
+    self.fxqxtextfield.text = @"0";    //发现报送道路、交安设施缺陷
+    self.fxwfxwtextfield.text = @"0";    //发现违法行为
+    self.jzwfxwtextfield.text = @"0";    //纠正违法行为
+    self.cllmzawtextfield.text = @"0";     //处理路面障碍物
+    self.bzgzctextfield.text = @"0";    //帮助故障车
+    self.jcsgdtextfield.text = @"0/0";   //施工检查点/纠正违反公路施工安全作业规程
+    self.gzzfjtextfield.text = @"0";  //告知交通综合行政执法局处理案件
+    self.fcflwstextfield.text = @"0";   //发出法律文书
+    self.qlxrtextfield.text = @"0/0";  //劝离行人
     self.reporter_contenttextview.text = nil;    //统计人意见
-    self.inspection_principal_contenttextview.text = nil;    //路政负
+    self.inspection_principal_contenttextview.text = nil;    //路政负责人意见
     self.notetextview.text = nil;    //备注栏
     self.reportertextfield.text = nil;     //统计人
     self.reporter_sign_datetextfield.text = nil;    //统计人签字日期
@@ -155,6 +157,7 @@
         if (!self.inspectionmain) {
             self.inspectionmain = [Inspection_Main newDataObjectWithEntityName:@"Inspection_Main"];
             self.inspectionmain.date_inspection = detailDate;
+            
         }
         [self btnSaveData];
         [[AppDelegate App] saveContext];

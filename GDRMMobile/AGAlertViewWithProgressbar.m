@@ -140,8 +140,7 @@
 
 @synthesize alertView, progressView, progressLabel;
 
-- (UIAlertView *)alertView
-{
+- (UIAlertView *)alertView{
     if (alertView == nil)
     {
         alertView = [[UIAlertView alloc] initWithTitle:self.title message:self.message delegate:self cancelButtonTitle:self.cancelButtonTitle otherButtonTitles:nil];

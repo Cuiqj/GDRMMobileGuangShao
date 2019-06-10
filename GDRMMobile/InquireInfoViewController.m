@@ -26,7 +26,7 @@
 @property (nonatomic,copy)   NSString *askID;
 @property (nonatomic,retain) NSMutableArray *caseInfoArray;
 @property (nonatomic,retain) UIPopoverController *pickerPopOver;
-@property (nonatomic, strong) UIPopoverController *listSelectPopover;
+@property (nonatomic, strong) UIPopoverController * listSelectPopover;
 @property (nonatomic, strong) NSArray *users;
 @property (nonatomic,copy) NSString *caseDescription;
 
@@ -82,8 +82,7 @@ enum kUITextFieldTag {
 }
 
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     self.askID=@"";
     self.textAsk.text=@"";
@@ -308,7 +307,16 @@ enum kUITextFieldTag {
         NSArray *inspectorArray = [[NSUserDefaults standardUserDefaults] objectForKey:INSPECTORARRAYKEY];
         self.textFieldInquirer.text = currentUserName;
         if (inspectorArray != nil && [inspectorArray count] > 0) {
-            self.textFieldRecorder.text = [inspectorArray objectAtIndex:0];
+            if([[inspectorArray objectAtIndex:0] isEqualToString:currentUserName]){
+                if ([[inspectorArray objectAtIndex:1] length]>0) {
+                    self.textFieldRecorder.text = [inspectorArray objectAtIndex:1];
+                }
+                else{
+                    self.textFieldRecorder.text = [inspectorArray objectAtIndex:0];
+                }
+            }else{
+                self.textFieldRecorder.text = [inspectorArray objectAtIndex:0];
+            }
         }
 
     }
@@ -821,26 +829,33 @@ enum kUITextFieldTag {
 
 #pragma mark - ListSelectPopoverDelegate
 
-- (void)listSelectPopover:(ListSelectViewController *)popoverContent selectedIndexPath:(NSIndexPath *)indexPath {
-    if (popoverContent.tableView.tag == kUITextFieldTagInquirer) {
-        [self.textFieldInquirer setText:self.users[indexPath.row]];
-    } else if (popoverContent.tableView.tag == kUITextFieldTagRecorder) {
-        [self.textFieldRecorder setText:self.users[indexPath.row]];
+- (void)listSelectPopover:(NSUInteger)tagnum selectedIndexPathforname:(NSString *)name{
+    if (tagnum == kUITextFieldTagInquirer) {
+        self.textFieldInquirer.text = name;
+    }else if (tagnum == kUITextFieldTagRecorder){
+        self.textFieldRecorder.text = name;
     }
 }
+//- (void)listSelectPopover:(ListSelectViewController *)popoverContent selectedIndexPathforname:(NSString *)name{
+//    if (popoverContent.tableView.tag == kUITextFieldTagInquirer) {
+//        self.textFieldInquirer.text = name;
+//    } else if (popoverContent.tableView.tag == kUITextFieldTagRecorder) {
+//        self.textFieldRecorder.text = name;
+//    }
+//}
 
 - (void)presentPopoverFromRect:(CGRect)rect dataSource:(NSArray *)dataArray tableViewTag:(NSInteger)tag {
-    ListSelectViewController *popoverContent = [self.storyboard instantiateViewControllerWithIdentifier:@"ListSelectPoPover"];
-    popoverContent.data = dataArray;    
-    popoverContent.delegate = self;
-    popoverContent.tableView.tag = tag;
-    if (self.listSelectPopover == nil) {
+    if ([self.listSelectPopover isPopoverVisible]) {
+        [self.listSelectPopover dismissPopoverAnimated:YES];
+    }else {
+        ListSelectViewController * popoverContent = [self.storyboard instantiateViewControllerWithIdentifier:@"ListSelectPoPover"];
+        popoverContent.data = dataArray;
+        popoverContent.delegate = self;
+        popoverContent.tagnum = tag;
         self.listSelectPopover = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
-    } else {
-        [self.listSelectPopover setContentViewController:popoverContent];
+        popoverContent.pickerPopover = self.listSelectPopover;
+        [self.listSelectPopover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
     }
-    popoverContent.pickerPopover = self.listSelectPopover;
-    [self.listSelectPopover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 }
 
 -(NSString*)generateCommonInquireText{

@@ -41,9 +41,6 @@
     }
 }
 
-
-
-
 + (UserInfo *)userInfoForUserID:(NSString *)userID {
     NSManagedObjectContext *context=[[AppDelegate App] managedObjectContext];
     NSEntityDescription *entity=[NSEntityDescription entityForName:NSStringFromClass([self class]) inManagedObjectContext:context];

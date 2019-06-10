@@ -33,8 +33,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *textParty;
 @property (weak, nonatomic) IBOutlet UITextField *textLocality;
 @property (weak, nonatomic) IBOutlet UITextField *textInquireDate;
-@property (weak, nonatomic) IBOutlet UITextField *textFieldInquirer;
-@property (weak, nonatomic) IBOutlet UITextField *textFieldRecorder;
+@property (weak, nonatomic) IBOutlet UITextField *textFieldInquirer;    //询问人
+@property (weak, nonatomic) IBOutlet UITextField *textFieldRecorder;    //记录人
 @property (weak, nonatomic) IBOutlet UITableView *caseInfoListView;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
