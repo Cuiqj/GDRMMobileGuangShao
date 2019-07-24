@@ -76,14 +76,19 @@
     if (![self.chinese_sum isEmpty]) {
         double num = fmod([self.sum doubleValue], 10000);
         NSString *chinese = [[NSNumber numberWithDouble:num] numberConvertToChineseCapitalNumberString];
+        if ((NSInteger)num % 10 == 0) {
+            return @"零";
+        }
         if (![chinese isEmpty]) {
             NSRange single = [chinese rangeOfString:@"元"];
             if (single.location != NSNotFound) {
-                NSRange ten = [chinese rangeOfString:@"拾"];
-                if (ten.location == NSNotFound || abs(ten.location - single.location) > 1) {
-                    NSString *result = [chinese substringWithRange:NSMakeRange(single.location-1, 1)];
-                    return result;
-                }
+                NSString *result = [chinese substringWithRange:NSMakeRange(single.location-1, 1)];
+                return result;
+//                NSRange ten = [chinese rangeOfString:@"拾"];
+//                if (ten.location == NSNotFound || abs(ten.location - single.location) > 1) {
+//                    NSString *result = [chinese substringWithRange:NSMakeRange(single.location-1, 1)];
+//                    return result;
+//                }
             }
         }
     }

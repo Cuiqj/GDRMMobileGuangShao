@@ -46,7 +46,7 @@
 
 
 #define VERSION_NAME @"广韶路政"
-#define VERSION_TIME @"2019年05月20日"
+#define VERSION_TIME @"2019年07月23日"
 /*
  *add by lxm
  */

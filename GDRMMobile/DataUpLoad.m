@@ -12,7 +12,7 @@
 #import "UploadRecord.h"
 #import "CasePhoto.h"
 #import "CaseServiceFiles.h"
-
+#import "Inspection.h"
 
 #import "UserInfo.h"        //一些数据机构ID没有，重新赋值
 //所需上传的表名称
@@ -113,6 +113,11 @@ static NSString *dataNameArray[UPLOADCOUNT]={@"Inspection_Main",@"Project",@"Tas
             NSString *dataTypeString = [NSClassFromString(currentDataName) complexTypeString];
             NSString *dataXML = @"";
             for (id obj in dataArray) {
+                if ([obj respondsToSelector:@selector(organization_id)]) {
+                    NSString *currentUserID=[[NSUserDefaults standardUserDefaults] stringForKey:USERKEY];
+                    NSString *orgID = [UserInfo userInfoForUserID:currentUserID].organization_id;
+                    [obj setValue:orgID forKey:@"organization_id"];
+                }
                 dataXML = [dataXML stringByAppendingString:[obj dataXMLString]];
                 [_uploadedRecord addUploadedRecord:currentDataName WitdData:obj];
             }
