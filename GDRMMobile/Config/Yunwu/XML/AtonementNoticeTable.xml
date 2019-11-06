@@ -385,9 +385,9 @@
         </UITextView>
         <!--案件描述-->
         <UITextView>
-            <fontSize>11</fontSize>
-            <origin x="31" y="90" />
-            <size width="150" height="35" />
+            <fontSize>10</fontSize>
+            <origin x="30" y="90" />
+            <size width="152.5" height="35" />
             <leftOffSet>105.5</leftOffSet>
             <lineHeight>24</lineHeight>
             <content>

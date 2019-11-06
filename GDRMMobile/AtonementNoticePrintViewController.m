@@ -162,23 +162,22 @@ static NSString * xmlName = @"AtonementNoticeTable";
     notice.code = [codeFormatter stringFromDate:[NSDate date]];
     NSRange range = [proveInfo.event_desc rangeOfString:@"于"];
     notice.case_desc = [proveInfo.event_desc substringFromIndex:range.location+1];
-    if ([self isTextBeyondRect:notice.case_desc] == TRUE) {
+//    if ([self isTextBeyondRect:notice.case_desc] == TRUE) {
         NSRange startRange = [proveInfo.event_desc rangeOfString:@"于"];
         NSRange endRange = [proveInfo.event_desc rangeOfString:@"损坏路产如下："];
-        NSRange range;
         
         if (startRange.location != NSNotFound) {
             range = NSMakeRange(startRange.location, [proveInfo.event_desc length] - startRange.location);
         }
         
         if (endRange.location != NSNotFound) {
-            range.length = endRange.location - startRange.location + 7;
+            range.length = endRange.location - startRange.location + 4;
         }
-        
         notice.case_desc = [proveInfo.event_desc substringWithRange:range];
-        notice.case_desc = [NSString stringWithFormat:@"%@%@",notice.case_desc,@"详细见《公路赔（补）偿清单》"];
+//        notice.case_desc = [NSString stringWithFormat:@"%@%@",notice.case_desc,@"详细见《公路赔（补）偿清单》"];
+        notice.case_desc = [NSString stringWithFormat:@"%@%@",notice.case_desc,@"详见《损坏公路设施索赔清单》。"];
 
-    }
+//    }
     notice.citizen_name = proveInfo.citizen_name;
     notice.witness = @"现场照片、勘验检查笔录、询问笔录、现场勘验图";
     notice.check_organization = [[Systype typeValueForCodeName:@"复核单位"]objectAtIndex:0];
@@ -264,11 +263,12 @@ static NSString * xmlName = @"AtonementNoticeTable";
         }
         
         if (endRange.location != NSNotFound) {
-            range.length = endRange.location - startRange.location + 7;
+            range.length = endRange.location - startRange.location + 4;
         }
         
         notice.case_desc = [proveInfo.event_desc substringWithRange:range];
-        notice.case_desc = [NSString stringWithFormat:@"%@%@",notice.case_desc,@"详细见《公路赔（补）偿清单》"];
+//        notice.case_desc = [NSString stringWithFormat:@"%@%@",notice.case_desc,@"详细见《公路赔（补）偿清单》"];
+        notice.case_desc = [NSString stringWithFormat:@"%@%@",notice.case_desc,@"详见《损坏公路设施索赔清单》。"];
         
     }
     notice.citizen_name = proveInfo.citizen_name;
@@ -579,4 +579,11 @@ static NSString * xmlName = @"AtonementNoticeTable";
     return FALSE;
 }
 
+- (void)deleteCurrentDoc{
+    NSManagedObjectContext * context = [[AppDelegate App]managedObjectContext];
+    if (self.notice){
+        [context deleteObject:self.notice];
+    }
+    [[AppDelegate App]saveContext];
+}
 @end

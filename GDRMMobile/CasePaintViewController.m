@@ -508,13 +508,13 @@
                     break;
                 case 1:
                 case 2:{
-                    selectedTool=indexPath.row;
-                    self.paintBoard.selectedTool=indexPath.row;
+                    selectedTool = (int)indexPath.row;
+                    self.paintBoard.selectedTool = indexPath.row;
                     [self.paintBoard setUserInteractionEnabled:YES];
                     CGRect moveableRect=CGRectMake(self.paintBoard.frame.origin.x, self.paintBoard.frame.origin.y, 0.0f,0.0f);
                     MoveableImage *moveableIconImage=[[MoveableImage alloc] initWithFrame:moveableRect];
-                    moveableIconImage.image=nil;
-                    moveableIconImage.delegate=self;
+                    moveableIconImage.image = nil;
+                    moveableIconImage.delegate = self;
                     moveableIconImage.isText = NO;
                     [self.paintBoard insertSubview:moveableIconImage atIndex:0];
                     [moveableIconImage setUserInteractionEnabled:YES];
